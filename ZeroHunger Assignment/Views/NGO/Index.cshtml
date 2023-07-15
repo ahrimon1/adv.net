@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ZeroHunger_Assignment.EF.Models.CollectRequest>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@if (TempData["Msg"] != null)
+{
+    <span class="alert alert-success">@TempData["Msg"]</span>
+}
+<th><a href="/NGO/ShowRequest">Assign Employee List</a></th>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResturantId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResturantId)
+            </td>
+            <td>
+                <a href="/NGO/AddRequest/@item.Id" class="btn btn-success">Assign Employee</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
